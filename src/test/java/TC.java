@@ -32,7 +32,7 @@ public class TC {
     }
 
     @Test
-    public void execute(){
+    public void execute() throws InterruptedException {
         stepOne();
         stepTwo();
         stepThree();
@@ -45,8 +45,8 @@ public class TC {
         driver.navigate().to(baseUrl);
         driver.manage().window().maximize();
 
-        if(driver.findElement(By.xpath("/html/body/div[3]/div[8]/div/div[2]/div/button/img\n")).isDisplayed()){
-            driver.findElement(By.xpath("/html/body/div[3]/div[8]/div/div[2]/div/button/img\n")).click();
+        if(driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).isDisplayed()){
+            driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).click();
         }
 
         try {
@@ -56,16 +56,23 @@ public class TC {
         }
         PG_Obj_Allegro.searchline.sendKeys("Iphone 11");
         PG_Obj_Allegro.searchButton.click();
+        if(driver.findElement(By.xpath("/html/body/div[2]/div[3]/form/div/div[2]/div/div/div/div/div[3]/button")).isDisplayed()){
+            driver.findElement(By.xpath("/html/body/div[2]/div[3]/form/div/div[2]/div/div/div/div/div[3]/button")).click();
+        }
     }
 
-    public void stepTwo(){
-       if (PG_Obj_Allegro.colorblack.isDisplayed()){
-           PG_Obj_Allegro.colorblack.click();
-       }else {
-           System.out.print("Error !!! Color is not displayed on the page ");
-       }
-         phoneList = driver.findElements(By.xpath("//div[@id='opbox-listing--base']/div/section/section/article"));
-        System.out.print("There are "+phoneList.size()+" Iphones on the page. ");
+    public void stepTwo() throws InterruptedException {
+        Thread.sleep(10000);
+        try{
+            if (PG_Obj_Allegro.colorblack.isDisplayed()){
+                PG_Obj_Allegro.colorblack.click();
+            }
+                 }catch (ElementNotVisibleException e){
+                     System.out.print("Error !!! Color is not displayed on the page ");
+                 }
+                     phoneList = driver.findElements(By.xpath("//div[@id='opbox-listing--base']/div/section/section/article"));
+                         System.out.print("There are "+phoneList.size()+" Iphones on the page. ");
+
     }
 
     public void stepThree(){

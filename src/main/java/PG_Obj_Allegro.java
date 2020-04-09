@@ -9,7 +9,7 @@ public class PG_Obj_Allegro {
     static WebElement searchline;
     @FindBy(xpath = "//button[contains(text(),'szukaj')]")
     static WebElement searchButton;
-    @FindBy(xpath = "//a[@href='/smartfony-i-telefony-komorkowe-apple-48978?string=Iphone%2011&kolor=czarny']")
+    @FindBy(xpath = "//a[@href='/smartfony-i-telefony-komorkowe-apple-48978?string=Iphone%2011&kolor=czarny']/span")
     static WebElement colorblack;
     @FindBy(xpath = "//div[@data-analytics-interaction-label='sortTypeList']/select")
     static WebElement sortingFrame;
