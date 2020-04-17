@@ -20,12 +20,12 @@ public class PG_Obj_UBIK {
     static WebElement postLog;
     @FindBy(xpath = "//input[@id='secretkey']")
     static WebElement postPassw;
-    @FindBy(xpath = "//input[@id='smsubmit']")
-    static WebElement logInToPost;
+    //@FindBy(xpath = "//input[@id='smsubmit']")
+    //static WebElement logInToPost;
 
-    @FindBy(xpath = "//a[@href = '/src/compose.php?mailbox=INBOX&startMessage=1']")
+    @FindBy(css = "html > body > table:nth-of-type(1) > tbody > tr:nth-of-type(2) > td:nth-of-type(1) > a:nth-of-type(1)")
     static WebElement newMsg;
-    @FindBy(xpath = "//input[@id='send_to']")
+    @FindBy(xpath = "#send_to")
     static WebElement postTo;
     @FindBy(xpath = "//input[@id='subject']")
     static WebElement subjectLetter;
