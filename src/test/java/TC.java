@@ -1,3 +1,4 @@
+import PAGE_OBJECTS.PG_Obj_Allegro;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
@@ -23,7 +24,7 @@ public class TC {
     public void setUp(){
         driver = new FirefoxDriver();
         baseUrl = "https://allegro.pl/";
-        PageFactory.initElements(driver,PG_Obj_Allegro.class);
+        PageFactory.initElements(driver, PG_Obj_Allegro.class);
     }
 
     @After
@@ -40,7 +41,7 @@ public class TC {
 
     public void stepOne(){
         System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
-        System.setProperty("webdriver.gecko.driver.driver", "./geckodriver.exe");
+        //System.setProperty("webdriver.gecko.driver.driver", "./geckodriver.exe");
 
         driver.navigate().to(baseUrl);
         driver.manage().window().maximize();

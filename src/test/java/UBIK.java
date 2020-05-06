@@ -1,3 +1,4 @@
+import PAGE_OBJECTS.PG_Obj_UBIK;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
@@ -29,7 +30,7 @@ public class UBIK {
     public void setUp(){
         driver = new FirefoxDriver();
         baseUrl = "https://ubi2.wit.edu.pl/?table=1";
-        PageFactory.initElements(driver,PG_Obj_UBIK.class);
+        PageFactory.initElements(driver, PG_Obj_UBIK.class);
     }
 
     @After

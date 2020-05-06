@@ -1,3 +1,4 @@
+import PAGE_OBJECTS.PG_Obj_WIT;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
@@ -24,7 +25,7 @@ public class WIT {
     public void setUp(){
         driver = new FirefoxDriver();
         baseUrl = "https://www.wit.edu.pl/";
-        PageFactory.initElements(driver,PG_Obj_WIT.class);
+        PageFactory.initElements(driver, PG_Obj_WIT.class);
 
         /*FirefoxProfile profile = new FirefoxProfile();
 
