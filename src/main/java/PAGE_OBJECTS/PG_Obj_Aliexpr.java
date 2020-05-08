@@ -3,7 +3,8 @@ package PAGE_OBJECTS;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PG_Obj_UBIK {
+public class PG_Obj_Aliexpr {
+
     @FindBy(xpath = "//button[@id='OK']")
     public static WebElement zgodaDane;
     @FindBy(xpath = "//input[@aria-label='Nazwa użytkownika']")
@@ -24,18 +25,7 @@ public class PG_Obj_UBIK {
     //@FindBy(xpath = "//input[@id='smsubmit']")
     //static WebElement logInToPost;
 
-    @FindBy(css = "html > body > table:nth-of-type(1) > tbody > tr:nth-of-type(2) > td:nth-of-type(1) > a:nth-of-type(1)")
-    public static WebElement newMsg;
-    @FindBy(xpath = "#send_to")
-    public static WebElement postTo;
-    @FindBy(xpath = "//input[@id='subject']")
-    public static WebElement subjectLetter;
-    @FindBy(xpath = "//textarea[@id='body']")
-    public static WebElement letterBox;
-    @FindBy(xpath = "//input[@id='send']")
-    public static WebElement sendLetter;
-    @FindBy(xpath = "//a[@href='/src/signout.php']")
-    public static WebElement sigNOut;
+
 
 
 
