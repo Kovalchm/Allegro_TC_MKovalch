@@ -1,13 +1,27 @@
+
 import PAGE_OBJECTS.PG_Obj_Aliexpr;
 import SQL_HELPER.DB_Manager;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+import java.sql.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Interaction;
+import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
 
@@ -17,10 +31,7 @@ import static org.junit.Assert.assertTrue;
 public class AliexpressBuy {
     WebDriver driver;
     private String baseUrl;
-    private String login = "";
-    private String passwd = "";
-
-
+    private List <String> dataSet;
 
     @Before
     public void setUp() throws SQLException {
@@ -28,10 +39,7 @@ public class AliexpressBuy {
         baseUrl = "https://www.aliexpress.com";
 
         DB_Manager db_manager = new DB_Manager();
-        db_manager.getPostgreData();
-
-        login = rs.getString(2);
-        passwd = rs.getString(3);
+        dataSet = db_manager.getClient_params();
 
         PageFactory.initElements(driver, PG_Obj_Aliexpr.class);
     }
@@ -45,75 +53,51 @@ public class AliexpressBuy {
     public void execute() throws InterruptedException {
         stepOne();
         //stepTwo();
+        //stepThree();
     }
 
     public void stepOne() throws InterruptedException {
         driver.navigate().to(baseUrl);
         driver.manage().window().maximize();
 
-        if(PG_Obj_Aliexpr.zgodaDane.isEnabled()) PG_Obj_Aliexpr.zgodaDane.click();
-        Alert alert = driver.switchTo().alert(); //
-        alert.accept(); // Popup window (Handing alert)
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        if(PG_Obj_Aliexpr.spamWindow.isEnabled()) PG_Obj_Aliexpr.spamWindow.click();
+        else Thread.sleep(2000);
 
-
-        Thread.sleep(2000);
         try{
-           PG_Obj_Aliexpr.ubikName.sendKeys(login);
-           PG_Obj_Aliexpr.ubikPassw.sendKeys(passwd);
-           PG_Obj_Aliexpr.logToUBIK.click();
+           PG_Obj_Aliexpr.mojProfil.click();
+
+           WebDriverWait wait = new WebDriverWait(driver,10);
+           wait.until(ExpectedConditions.elementToBeClickable(PG_Obj_Aliexpr.logINAli));
+           PG_Obj_Aliexpr.logINAli.click();
+
+           driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+            if(driver.findElement(By.xpath("//div[@id='batman-tabbed']/ul/li")).isEnabled()){
+                driver.findElement(By.xpath("//div[@id='batman-tabbed']/ul/li[2]")).click();
+            }
+            WebElement tmp = driver.findElement(By.xpath("//div[@id='batman-tabbed']/ul/li[2]"));
+
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+            Actions action = new Actions(driver);
+            action.moveToElement(tmp).doubleClick().moveByOffset(-180,60).doubleClick().sendKeys(dataSet.get(0)).perform();
+            action.moveToElement(tmp).moveByOffset(-180,120).doubleClick().sendKeys(dataSet.get(1)).perform();
+            action.moveToElement(tmp).moveByOffset(-180,220).doubleClick().perform();
+
         }catch (Exception e){
             assertFalse("Logs didn't pass",false);
         }
 
         Thread.sleep(1000);
-
-        PG_Obj_Aliexpr.diplomaObj.click();
-        if(driver.findElement(By.xpath("//div[@id='karty_list_box']")).isEnabled()){
-            assertTrue("Diploma is in progress",true);
-        }
-
-
-        try{
-            PG_Obj_Aliexpr.postObj.click();
-
-        }catch (Exception e){ }
-        driver.navigate().to("https://poczta.wsisiz.edu.pl/src/login.php");
-        boolean elemPr = isElementPresent(By.xpath("//input[@id='smsubmit']"),driver);
-
-        for(int i = 1; i < 2; i++){
-            if (elemPr == true){
-                try {
-                    PG_Obj_Aliexpr.postLog.sendKeys(login);
-                    PG_Obj_Aliexpr.postPassw.sendKeys(passwd);
-                    driver.findElement(By.xpath("//input[@id='smsubmit']")).click();
-                    //PG_Obj_UBIK.logInToPost.click();
-                } catch (Exception e) {
-                    assertFalse("Logs didn't pass in UBIK Post ", false);
-                }
-            } else driver.navigate().to("https://poczta.wsisiz.edu.pl/src/login.php");
-        }
-
     }
 
     public void stepTwo() throws InterruptedException {
 
-
-
-
     }
 
-    public static boolean isElementPresent(By by, WebDriver driver) throws NoSuchElementException
-    {
-        boolean present;
-        try
-        {
-            driver.findElement(by);
-            present = true;
-        }catch (NoSuchElementException e)
-        {
-            present = false;
-        }
-        return present;
+    public void stepThree() throws InterruptedException {
+
     }
 
 }
