@@ -39,7 +39,7 @@ public class TC {
         stepThree();
     }
 
-    public void stepOne(){
+    public void stepOne() throws InterruptedException {
         System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
         //System.setProperty("webdriver.gecko.driver.driver", "./geckodriver.exe");
 
@@ -55,11 +55,14 @@ public class TC {
         }catch (Error error){
             System.out.print("Error !!! Searchline element not detected");
         }
+
         PG_Obj_Allegro.searchline.sendKeys("Iphone 11");
         PG_Obj_Allegro.searchButton.click();
-        if(driver.findElement(By.xpath("/html/body/div[2]/div[3]/form/div/div[2]/div/div/div/div/div[3]/button")).isDisplayed()){
-            driver.findElement(By.xpath("/html/body/div[2]/div[3]/form/div/div[2]/div/div/div/div/div[3]/button")).click();
+        Thread.sleep(2000);
+        if(PG_Obj_Allegro.searchInPopUpWindow.isDisplayed() == true){
+            PG_Obj_Allegro.searchInPopUpWindow.click();
         }
+
     }
 
     public void stepTwo() throws InterruptedException {
