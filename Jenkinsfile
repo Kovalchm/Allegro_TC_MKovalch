@@ -13,9 +13,9 @@ node {
    stage('Reports') {
        allure([
     includeProperties: false,
-       jdk: '',
+       	  jdk: '',
           properties: [],
-      reportBuildPolicy: 'ALWAYS',
-      results: [[path: 'target/allure-results']])
+      	  reportBuildPolicy: 'ALWAYS',
+          results: [[path: 'target/allure-results']])
    }
 }
