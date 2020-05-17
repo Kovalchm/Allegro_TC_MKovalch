@@ -28,7 +28,7 @@ import java.util.NoSuchElementException;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AliexpressBuy {
+public class Aliexpress_Test {
     WebDriver driver;
     private String baseUrl;
     private List <String> dataSet;

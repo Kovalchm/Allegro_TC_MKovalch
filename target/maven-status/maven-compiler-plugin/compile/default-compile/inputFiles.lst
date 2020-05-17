@@ -1,3 +1,5 @@
-/home/misha/development/Allegro_TC_MKovalch/src/main/java/PG_Obj_UBIK.java
-/home/misha/development/Allegro_TC_MKovalch/src/main/java/PG_Obj_WIT.java
-/home/misha/development/Allegro_TC_MKovalch/src/main/java/PG_Obj_Allegro.java
+/home/misha/development/Allegro_TC_MKovalch/src/main/java/PAGE_OBJECTS/PG_Obj_WIT.java
+/home/misha/development/Allegro_TC_MKovalch/src/main/java/PAGE_OBJECTS/PG_Obj_Aliexpr.java
+/home/misha/development/Allegro_TC_MKovalch/src/main/java/GENERAL_HELPERS/General_Helpers.java
+/home/misha/development/Allegro_TC_MKovalch/src/main/java/SQL_HELPER/DB_Manager.java
+/home/misha/development/Allegro_TC_MKovalch/src/main/java/PAGE_OBJECTS/PG_Obj_Allegro.java

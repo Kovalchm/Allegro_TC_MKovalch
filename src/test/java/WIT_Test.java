@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class WIT {
+public class WIT_Test {
     public WebDriver driver;
     private String baseUrl;
 

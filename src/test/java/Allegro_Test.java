@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class TC {
+public class Allegro_Test {
     public WebDriver driver;
     private String baseUrl;
     List<WebElement> phoneList;
