@@ -25,12 +25,13 @@ public class Allegro_Test {
         driver = new FirefoxDriver();
         baseUrl = "https://allegro.pl/";
         PageFactory.initElements(driver, PG_Obj_Allegro.class);
+        System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
     }
 
     @After
     public void teardown(){
         driver.close();
-        //driver.quit();
+        driver.quit();
     }
 
     @Test
@@ -41,10 +42,10 @@ public class Allegro_Test {
     }
 
     public void stepOne() throws InterruptedException {
-        System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+
         //System.setProperty("webdriver.gecko.driver.driver", "./geckodriver.exe");
 
-        driver.navigate().to(baseUrl);
+        driver.get(baseUrl);//navigate().to(baseUrl);
         driver.manage().window().maximize();
 
         if(driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).isDisplayed()){
