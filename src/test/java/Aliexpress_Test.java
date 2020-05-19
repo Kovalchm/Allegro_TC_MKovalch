@@ -46,7 +46,8 @@ public class Aliexpress_Test {
 
     @After
     public void teardown(){
-        driver.quit();
+        driver.close();
+        //driver.quit();
     }
 
     @Test

@@ -29,7 +29,8 @@ public class Allegro_Test {
 
     @After
     public void teardown(){
-        driver.quit();
+        driver.close();
+        //driver.quit();
     }
 
     @Test
@@ -95,7 +96,7 @@ public class Allegro_Test {
         }*/
         Collections.sort(numericprice);
         Integer pricewithVAT = numericprice.get(numericprice.size()-1);
-        System.out.println("The bigest price with vat is "+pricewithVAT*1.23);
+        System.out.println("The bigest price with vat is "+ Math.round(pricewithVAT*1.23));
 
         //Second one is to sort all phones using allegro by price desc and get text element of the most expensive one
       /*  PG_Obj_Allegro.sortingFrame.click();

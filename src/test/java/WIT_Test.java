@@ -13,10 +13,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class WIT_Test {
     public WebDriver driver;
     private String baseUrl;
@@ -28,7 +24,6 @@ public class WIT_Test {
         PageFactory.initElements(driver, PG_Obj_WIT.class);
 
         /*FirefoxProfile profile = new FirefoxProfile();
-
         //Set Location to store files after downloading.
         profile.setPreference("browser.download.dir", "/home/misha/Downloads\n");
         profile.setPreference("browser.download.folderList", 2);
@@ -42,13 +37,12 @@ public class WIT_Test {
 
         //Pass FProfile parameter In webdriver to use preferences to download file.
         */
-
-
     }
 
     @After
     public void teardown(){
-        driver.quit();
+        driver.close();
+        //driver.quit();
     }
 
     @Test
