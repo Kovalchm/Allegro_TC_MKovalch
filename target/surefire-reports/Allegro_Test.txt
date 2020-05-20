@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: Allegro_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 55.731 s <<< FAILURE! - in Allegro_Test
-execute(Allegro_Test)  Time elapsed: 55.654 s  <<< ERROR!
-org.openqa.selenium.NoSuchSessionException: 
-Tried to run command without establishing a connection
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'misha-Aspire-V3-771', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.15.0-99-generic', java.version: '11.0.7'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 76.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20200429185419, moz:geckodriverVersion: 0.26.0, moz:headless: false, moz:processID: 347, moz:profile: /tmp/rust_mozprofile7Eioub, moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 4.15.0-99-generic, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: d8945269-3328-439f-9578-0c99e7be582b
-	at Allegro_Test.teardown(Allegro_Test.java:34)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 70.345 s - in Allegro_Test

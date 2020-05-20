@@ -22,7 +22,7 @@ public class WIT_Test {
         driver = new FirefoxDriver();
         baseUrl = "https://www.wit.edu.pl/";
         PageFactory.initElements(driver, PG_Obj_WIT.class);
-        System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
 
         /*FirefoxProfile profile = new FirefoxProfile();
         //Set Location to store files after downloading.
@@ -43,7 +43,7 @@ public class WIT_Test {
     @After
     public void teardown(){
         driver.close();
-        driver.quit();
+        //driver.quit();
     }
 
     @Test

@@ -41,14 +41,14 @@ public class Aliexpress_Test {
         DB_Manager db_manager = new DB_Manager();
         dataSet = db_manager.getClient_params();
 
-
         PageFactory.initElements(driver, PG_Obj_Aliexpr.class);
+        System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
     }
 
     @After
     public void teardown(){
         driver.close();
-        driver.quit();
+        //driver.quit();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class Aliexpress_Test {
     }
 
     public void stepOne() throws InterruptedException {
-        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+
         driver.get(baseUrl); //navigate().to(baseUrl);
         driver.manage().window().maximize();
 

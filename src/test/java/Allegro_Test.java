@@ -25,13 +25,13 @@ public class Allegro_Test {
         driver = new FirefoxDriver();
         baseUrl = "https://allegro.pl/";
         PageFactory.initElements(driver, PG_Obj_Allegro.class);
-        System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
     }
 
     @After
     public void teardown(){
         driver.close();
-        driver.quit();
+        //driver.quit();
     }
 
     @Test
@@ -86,9 +86,9 @@ public class Allegro_Test {
         allPhonePrice = driver.findElements(By.xpath("//div[@id='opbox-listing--base']/div/section[2]/section/article/div/div/div[2]/div[2]/div/div/span"));
         for (WebElement s : allPhonePrice){
             //s.getText().replaceAll("(\\d+)\\,(\\d+)", "$1.$2"); Dont want to work, unfortunately need to parse Int instead double
-            String substring = s.getText().substring(0,5);
-            String substring1 = substring.replaceAll("\\s+", "");
-            numericprice.add(Integer.parseInt(substring1));
+            String substring = s.getText().substring(0,5).replaceAll("\\s+", "");
+            //String substring1 = substring.replaceAll("\\s+", "");
+            numericprice.add(Integer.parseInt(substring));
         }
         //numericprice.add(Integer.parseInt(arr[count]));
        /* for (int i=0; i < arr.length; i++){
