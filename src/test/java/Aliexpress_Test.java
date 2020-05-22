@@ -42,7 +42,7 @@ public class Aliexpress_Test {
         dataSet = db_manager.getClient_params();
 
         PageFactory.initElements(driver, PG_Obj_Aliexpr.class);
-        System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
     }
 
     @After
