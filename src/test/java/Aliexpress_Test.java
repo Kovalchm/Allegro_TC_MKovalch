@@ -12,7 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 import java.sql.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Interaction;
@@ -35,14 +37,22 @@ public class Aliexpress_Test {
 
     @Before
     public void setUp() throws SQLException {
-        driver = new FirefoxDriver();
+        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+
+        FirefoxBinary firefoxBinary = new FirefoxBinary();
+        firefoxBinary.addCommandLineOptions("-headless");
+
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setBinary(firefoxBinary);
+
+        driver = new FirefoxDriver(firefoxOptions);
         baseUrl = "https://www.aliexpress.com";
 
         DB_Manager db_manager = new DB_Manager();
         dataSet = db_manager.getClient_params();
 
         PageFactory.initElements(driver, PG_Obj_Aliexpr.class);
-        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+
     }
 
     @After

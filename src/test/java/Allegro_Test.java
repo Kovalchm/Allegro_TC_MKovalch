@@ -4,13 +4,16 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 public class Allegro_Test {
@@ -18,14 +21,22 @@ public class Allegro_Test {
     private String baseUrl;
     List<WebElement> phoneList;
     List<WebElement> allPhonePrice;
-    List<Integer> numericprice = new ArrayList<>();
+    List<Float> numericprice = new ArrayList<>();
 
     @Before
     public void setUp(){
-        driver = new FirefoxDriver();
+        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+
+        FirefoxBinary firefoxBinary = new FirefoxBinary();
+        firefoxBinary.addCommandLineOptions("-headless");
+
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setBinary(firefoxBinary);
+
+        driver = new FirefoxDriver(firefoxOptions);
         baseUrl = "https://allegro.pl/";
         PageFactory.initElements(driver, PG_Obj_Allegro.class);
-        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+
     }
 
     @After
@@ -43,14 +54,16 @@ public class Allegro_Test {
 
     public void stepOne() throws InterruptedException {
 
-        //System.setProperty("webdriver.gecko.driver.driver", "./geckodriver.exe");
-
         driver.get(baseUrl);//navigate().to(baseUrl);
         driver.manage().window().maximize();
+        try {
+            if(driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).isDisplayed()){
+                driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).click();
+            }
+        }catch (NoSuchElementException ex){
 
-        if(driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).isDisplayed()){
-            driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).click();
         }
+
 
         try {
             assertTrue(PG_Obj_Allegro.searchline.isEnabled());
@@ -85,27 +98,13 @@ public class Allegro_Test {
         //There are two possible methods for that task:
         allPhonePrice = driver.findElements(By.xpath("//div[@id='opbox-listing--base']/div/section[2]/section/article/div/div/div[2]/div[2]/div/div/span"));
         for (WebElement s : allPhonePrice){
-            //s.getText().replaceAll("(\\d+)\\,(\\d+)", "$1.$2"); Dont want to work, unfortunately need to parse Int instead double
-            String substring = s.getText().substring(0,5).replaceAll("\\s+", "");
-            //String substring1 = substring.replaceAll("\\s+", "");
-            numericprice.add(Integer.parseInt(substring));
+            String substring = s.getText().replaceAll("(\\d+)\\,(\\d+)", "$1.$2").replaceAll("[^0-9?!\\.]",""); //s.getText().replaceAll("(\\d+)\\,(\\d+)", "$1.$2");
+            numericprice.add(Float.parseFloat(substring));
         }
-        //numericprice.add(Integer.parseInt(arr[count]));
-       /* for (int i=0; i < arr.length; i++){
-            int x = Integer.parseInt(arr[0]);
-            numericprice.add(x);
-        }*/
-        Collections.sort(numericprice);
-        Integer pricewithVAT = numericprice.get(numericprice.size()-1);
-        System.out.println("The bigest price with vat is "+ Math.round(pricewithVAT*1.23));
 
-        //Second one is to sort all phones using allegro by price desc and get text element of the most expensive one
-      /*  PG_Obj_Allegro.sortingFrame.click();
-        driver.findElement(By.xpath("//option[@value='pd']")).click();
-       WebElement mostExpensive = driver.findElement(By.xpath("/html/body/div[2]/div[4]/div/div/div/div/div/div[2]/div[1]/div[3]/div" +
-                "/div/div/div[2]/div[1]/div/section[2]/section/article[1]/div/div/div[2]/div[2]/div/div/span"));
-        String tmp = mostExpensive.getText();
-        double price = Double.parseDouble(tmp) * 1.23;
-       System.out.println("Max price with VAT is "+price);*/
+        Collections.sort(numericprice);
+        Float pricewithVAT = numericprice.get(numericprice.size()-1);
+        System.out.println("The bigest price with VAT is "+ Math.round(pricewithVAT*1.23));
+
     }
 }

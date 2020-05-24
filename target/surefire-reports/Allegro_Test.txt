@@ -1,9 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: Allegro_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 56.136 s <<< FAILURE! - in Allegro_Test
-execute(Allegro_Test)  Time elapsed: 56.045 s  <<< ERROR!
-java.lang.NumberFormatException: For input string: "959,0"
-	at Allegro_Test.stepThree(Allegro_Test.java:91)
-	at Allegro_Test.execute(Allegro_Test.java:41)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 67.754 s - in Allegro_Test

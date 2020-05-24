@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -19,10 +21,17 @@ public class WIT_Test {
 
     @Before
     public void setUp(){
-        driver = new FirefoxDriver();
+        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+        FirefoxBinary firefoxBinary = new FirefoxBinary();
+        firefoxBinary.addCommandLineOptions("-headless");
+
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setBinary(firefoxBinary);
+
+        driver = new FirefoxDriver(firefoxOptions);
         baseUrl = "https://www.wit.edu.pl/";
         PageFactory.initElements(driver, PG_Obj_WIT.class);
-        //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
+
 
         /*FirefoxProfile profile = new FirefoxProfile();
         //Set Location to store files after downloading.
