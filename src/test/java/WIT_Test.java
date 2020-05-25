@@ -1,9 +1,12 @@
+import GENERAL_HELPERS.General_Helpers;
 import PAGE_OBJECTS.PG_Obj_WIT;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -16,22 +19,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WIT_Test {
+    General_Helpers gh = new General_Helpers();
     public WebDriver driver;
-    private String baseUrl;
+    private String baseUrl = "https://www.wit.edu.pl/";
+
 
     @Before
     public void setUp(){
         //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
-        FirefoxBinary firefoxBinary = new FirefoxBinary();
-        firefoxBinary.addCommandLineOptions("-headless");
-
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setBinary(firefoxBinary);
-
-        driver = new FirefoxDriver(firefoxOptions);
-        baseUrl = "https://www.wit.edu.pl/";
+        driver = General_Helpers.BrowserSetUp(driver,"Firefox",false);
+        //driver = new FirefoxDriver();
         PageFactory.initElements(driver, PG_Obj_WIT.class);
-
 
         /*FirefoxProfile profile = new FirefoxProfile();
         //Set Location to store files after downloading.
@@ -61,10 +59,10 @@ public class WIT_Test {
     }
 
     public void stepOne(){
+        driver.get(baseUrl);
+        driver.manage().window().maximize();
 
-        driver.get(baseUrl);//navigate().to(baseUrl);
         waitForPageLoaded();
-
         if (PG_Obj_WIT.rodoOk.isDisplayed()){
          PG_Obj_WIT.rodoOk.click();
         }

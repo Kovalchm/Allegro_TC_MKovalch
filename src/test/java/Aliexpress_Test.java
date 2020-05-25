@@ -1,4 +1,5 @@
 
+import GENERAL_HELPERS.General_Helpers;
 import PAGE_OBJECTS.PG_Obj_Aliexpr;
 import SQL_HELPER.DB_Manager;
 import org.junit.*;
@@ -12,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 import java.sql.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -23,7 +26,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.swing.*;
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
 
@@ -32,25 +34,17 @@ import static org.junit.Assert.assertTrue;
 
 public class Aliexpress_Test {
     WebDriver driver;
-    private String baseUrl;
+    private String baseUrl = "https://www.aliexpress.com";
     private List <String> dataSet;
 
     @Before
     public void setUp() throws SQLException {
         //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
 
-        FirefoxBinary firefoxBinary = new FirefoxBinary();
-        firefoxBinary.addCommandLineOptions("-headless");
-
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setBinary(firefoxBinary);
-
-        driver = new FirefoxDriver(firefoxOptions);
-        baseUrl = "https://www.aliexpress.com";
-
         DB_Manager db_manager = new DB_Manager();
         dataSet = db_manager.getClient_params();
-
+        //driver = new FirefoxDriver();
+        driver = General_Helpers.BrowserSetUp(driver,"Firefox",false);
         PageFactory.initElements(driver, PG_Obj_Aliexpr.class);
 
     }
@@ -70,7 +64,7 @@ public class Aliexpress_Test {
 
     public void stepOne() throws InterruptedException {
 
-        driver.get(baseUrl); //navigate().to(baseUrl);
+        driver.get(baseUrl);
         driver.manage().window().maximize();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

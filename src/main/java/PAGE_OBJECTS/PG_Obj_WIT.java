@@ -7,7 +7,7 @@ public class PG_Obj_WIT {
 
     @FindBy(xpath = "//span[contains(text(),'Przejdź dalej')]")
     public static WebElement rodoOk;
-    @FindBy(xpath = "//a[@href=\"/oferta-edukacyjna\"]")
+    @FindBy(xpath = "//div[@class=\"menu\"]/ul/li[3]")
     public static WebElement studiaDropdown;
     @FindBy(xpath = "//a[@href=\"/studia-inzynierskie/informatyka\"]")
     public static WebElement informaticsDirection;

@@ -1,9 +1,12 @@
+import GENERAL_HELPERS.General_Helpers;
 import PAGE_OBJECTS.PG_Obj_Allegro;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -18,7 +21,7 @@ import java.util.NoSuchElementException;
 
 public class Allegro_Test {
     public WebDriver driver;
-    private String baseUrl;
+    private String baseUrl = "https://allegro.pl/";
     List<WebElement> phoneList;
     List<WebElement> allPhonePrice;
     List<Float> numericprice = new ArrayList<>();
@@ -26,15 +29,8 @@ public class Allegro_Test {
     @Before
     public void setUp(){
         //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
-
-        FirefoxBinary firefoxBinary = new FirefoxBinary();
-        firefoxBinary.addCommandLineOptions("-headless");
-
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setBinary(firefoxBinary);
-
-        driver = new FirefoxDriver(firefoxOptions);
-        baseUrl = "https://allegro.pl/";
+        //driver = new FirefoxDriver();
+        driver = General_Helpers.BrowserSetUp(driver,"Firefox",false);
         PageFactory.initElements(driver, PG_Obj_Allegro.class);
 
     }
@@ -53,9 +49,9 @@ public class Allegro_Test {
     }
 
     public void stepOne() throws InterruptedException {
-
-        driver.get(baseUrl);//navigate().to(baseUrl);
+        driver.get(baseUrl);
         driver.manage().window().maximize();
+
         try {
             if(driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).isDisplayed()){
                 driver.findElement(By.xpath("//button[contains(text(),'przejdź dalej')]")).click();
