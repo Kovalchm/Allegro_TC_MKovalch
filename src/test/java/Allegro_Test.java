@@ -30,7 +30,7 @@ public class Allegro_Test {
     public void setUp(){
         //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
         //driver = new FirefoxDriver();
-        driver = General_Helpers.BrowserSetUp(driver,"Firefox",false);
+        driver = General_Helpers.BrowserSetUp(driver,"Firefox",true);
         PageFactory.initElements(driver, PG_Obj_Allegro.class);
 
     }

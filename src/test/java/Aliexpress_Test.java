@@ -44,7 +44,7 @@ public class Aliexpress_Test {
         DB_Manager db_manager = new DB_Manager();
         dataSet = db_manager.getClient_params();
         //driver = new FirefoxDriver();
-        driver = General_Helpers.BrowserSetUp(driver,"Firefox",false);
+        driver = General_Helpers.BrowserSetUp(driver,"Firefox",true);
         PageFactory.initElements(driver, PG_Obj_Aliexpr.class);
 
     }

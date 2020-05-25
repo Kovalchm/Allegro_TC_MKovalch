@@ -27,7 +27,7 @@ public class WIT_Test {
     @Before
     public void setUp(){
         //System.setProperty("webdriver.firefox.marionette", "./geckodriver.exe");
-        driver = General_Helpers.BrowserSetUp(driver,"Firefox",false);
+        driver = General_Helpers.BrowserSetUp(driver,"Firefox",true);
         //driver = new FirefoxDriver();
         PageFactory.initElements(driver, PG_Obj_WIT.class);
 
