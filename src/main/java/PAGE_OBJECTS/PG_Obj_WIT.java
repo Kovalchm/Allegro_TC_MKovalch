@@ -11,7 +11,7 @@ public class PG_Obj_WIT {
     public static WebElement studiaDropdown;
     @FindBy(xpath = "//a[@href=\"/studia-inzynierskie/informatyka\"]")
     public static WebElement informaticsDirection;
-    @FindBy(xpath = "//a[@href=\"/studia-inzynierskie/informatyka/bazy-danych\"]/span")
+    @FindBy(xpath = "//a[@href=\"/studia-inzynierskie/informatyka/przetwarzanie-danych\"]/span")
     public static WebElement bdSpeciality;
     @FindBy(xpath = "//a[@href=\"/studia-inzynierskie/informatyka/inzynieria-oprogramowania\"]/span")
     public static WebElement engSpeciality;

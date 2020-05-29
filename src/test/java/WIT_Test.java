@@ -78,14 +78,14 @@ public class WIT_Test {
         studyChoose.perform();
         PG_Obj_WIT.informaticsDirection.click();
 
-        if(driver.findElement(By.xpath("//a[@href=\"/studia-inzynierskie/informatyka/bazy-danych\"]/span"))!=null &&
+        if(driver.findElement(By.xpath("//a[@href=\"/studia-inzynierskie/informatyka/przetwarzanie-danych\"]/span"))!=null &&
                 driver.findElement(By.xpath("//a[@href=\"/studia-inzynierskie/informatyka/inzynieria-oprogramowania\"]/span"))!= null &&
                     driver.findElement(By.xpath("//a[@href=\"/studia-inzynierskie/informatyka/technologia-chmury-obliczeniowej\"]/span"))!=null){
             PG_Obj_WIT.bdSpeciality.click();
         }
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        if(driver.findElement(By.xpath("//h1[text() = 'Bazy danych']"))!=null) js.executeScript("window.history.go(-1)");
+        if(driver.findElement(By.xpath("//h1[text() = 'Przetwarzanie danych']"))!=null) js.executeScript("window.history.go(-1)");
 
         WebDriverWait wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.visibilityOfAllElements(PG_Obj_WIT.engSpeciality));
