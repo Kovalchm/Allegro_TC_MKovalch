@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: Allegro_Test
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 55.456 s - in Allegro_Test
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 59.593 s - in Allegro_Test
